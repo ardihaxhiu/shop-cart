@@ -41,6 +41,6 @@ class SendLowStockNotification implements ShouldQueue
         Mail::to($adminEmail)->send(new LowStockAlert($this->product));
 
         // Mark as sent (TTL: 1 day)
-        Cache::put($cacheKey, true, now()->addMinute());
+        Cache::put($cacheKey, true, now()->addDay());
     }
 }
